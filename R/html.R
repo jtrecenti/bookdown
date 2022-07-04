@@ -395,7 +395,7 @@ split_chapters = function(
         'The heading ', x2, ' must have at least an id or a number'
       )
       nm = if (grepl('[+]number$', split_by)) {
-        paste(c(num, id), collapse = '-')
+        paste(c(stringr::str_replace_all(num, "\\.", "-"), id), collapse = '-')
       } else id
       if (is.null(nm)) stop('The heading ', x2, ' must have an id')
       nm
